@@ -1,2 +1,5 @@
-2022-11-30 13:43:17,155 — __main__ — INFO — DataMaker is ready
-2022-11-30 13:43:17,299 — __main__ — INFO — Train and validation data is ready
+2022-12-01 20:54:46,023 — train — INFO — Model loaded
+2022-12-01 20:54:46,024 — train — INFO — Training started ...
+2022-12-01 20:54:56,864 — train — INFO — Epoch 1 done
+2022-12-01 20:55:06,450 — train — INFO — Epoch 2 done
+2022-12-01 20:55:06,606 — train — INFO — D:\Enginering\CatsvsDogs\experiments\model.pt is saved
