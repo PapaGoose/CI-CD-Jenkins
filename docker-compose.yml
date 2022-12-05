@@ -1,8 +1,13 @@
 version: '3.8'
 services:
-   web:
+    web:
        build: .
        command: bash -c "python src/preprocess.py && python src/train.py && python src/predict.py -m LOG_REG -t func"
        ports:
            - 8000:8000
        image: papagoose/catvsdog:latest
+    jenkins:
+        image: jenkins-docker:latest
+        ports:
+            - 8080:8080
+            - 50000:50000

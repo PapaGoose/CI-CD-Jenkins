@@ -1,5 +1,6 @@
-2022-12-01 20:54:46,023 — train — INFO — Model loaded
-2022-12-01 20:54:46,024 — train — INFO — Training started ...
-2022-12-01 20:54:56,864 — train — INFO — Epoch 1 done
-2022-12-01 20:55:06,450 — train — INFO — Epoch 2 done
-2022-12-01 20:55:06,606 — train — INFO — D:\Enginering\CatsvsDogs\experiments\model.pt is saved
+2022-12-05 22:01:24,442 — __main__ — INFO — DataMaker is ready
+2022-12-05 22:01:24,561 — __main__ — INFO — D:\Enginering\CatsvsDogs\data\splited\train.csv is saved
+2022-12-05 22:01:24,607 — __main__ — INFO — D:\Enginering\CatsvsDogs\data\splited\valid.csv is saved
+2022-12-05 22:01:24,662 — __main__ — INFO — D:\Enginering\CatsvsDogs\data\splited\test.csv is saved
+2022-12-05 22:01:24,768 — __main__ — INFO — Augmentation saved
+2022-12-05 22:01:24,768 — __main__ — INFO — Train/validation/test data are ready
