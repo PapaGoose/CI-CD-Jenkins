@@ -6,8 +6,3 @@ services:
        ports:
            - 8000:8000
        image: papagoose/catvsdog:latest
-    jenkins:
-        image: jenkins-docker:latest
-        ports:
-            - 8080:8080
-            - 50000:50000
