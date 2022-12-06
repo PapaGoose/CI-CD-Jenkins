@@ -16,6 +16,7 @@ import torch.nn as nn
 
 SHOW_LOG = True
 
+# Класс для итерации и обработки данных для обучения
 class CatsVsDogsDataset(Dataset):
     def __init__(self, df_images, transform=None):
         self.images_filepaths = df_images['image_path'].values
@@ -33,9 +34,9 @@ class CatsVsDogsDataset(Dataset):
             image = self.transform(image=image)["image"]
         return image, label
 
-
+# Класс, который реализует методы по обучению Resnet50
 class ResnetModel():
-
+    # Инициализация исходных данных
     def __init__(self) -> None:
         logger = Logger(SHOW_LOG)
         self.config = configparser.ConfigParser()
@@ -52,7 +53,7 @@ class ResnetModel():
             pd.read_csv(self.config['SPLITED DATA']['valid']), 
             A.load(self.config['AUGMENTATION']['valid'])
         )
-    
+    # Запуск обучения модели с заданными параметрами
     def resnet(self, use_config: bool, device='cpu', lr=0.001, epochs=2, num_workers=0, batch_size=4, predict=False) -> bool:
         if use_config:
             try:
@@ -117,6 +118,7 @@ class ResnetModel():
         }
         return self.save_model(model, self.model_path, "RESNET50", params)
 
+    # Сохранение обученной модели
     def save_model(self, model, path: str, name: str, params: dict) -> bool:
         self.config[name] = params
         os.remove('config.ini')

@@ -15,7 +15,7 @@ TEST_SIZE = 0.2
 
 
 class DataMaker():
-
+    # Инициализация исходных данных
     def __init__(self) -> None:
         logger = Logger(SHOW_LOG)
         self.config = configparser.ConfigParser()
@@ -27,6 +27,7 @@ class DataMaker():
         self.transforms_path = os.path.join(self.project_path, 'transforms')
         self.log.info("DataMaker is ready")
 
+    # Получение путей дял изобаржений 
     def get_data(self) -> set:
         train_images = os.listdir(self.train_path)
         test_images = os.listdir(self.test_path)
@@ -47,7 +48,8 @@ class DataMaker():
 
         shuffle(self.train_images_path)
         return True
-
+    
+    # Разбитие данных на train/test
     def split_data(self, test_size=TEST_SIZE) -> set:
         try:
             self.get_data()
@@ -97,6 +99,7 @@ class DataMaker():
         return os.path.isfile(train_csv_path) and os.path.isfile(valid_csv_path) and \
             os.path.isfile(test_csv_path)
     
+    # Сохранение аугментации
     def save_augmentation(self) -> bool:
         try:
             train_transform = A.Compose(
