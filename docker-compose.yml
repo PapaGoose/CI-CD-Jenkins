@@ -5,4 +5,4 @@ services:
        command: bash -c "python src/preprocess.py && python src/train.py && python src/predict.py -m LOG_REG -t func"
        ports:
            - 8000:8000
-       image: papagoose/catvsdog:latest
+       image: papagoose/catvsdog
