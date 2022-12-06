@@ -1,9 +1,37 @@
 pipeline {
-    agent { docker { image 'python:3.10.7-alpine' } }
+    agent any
     stages {
-        stage('build') {
+        stage('Git clone'){
             steps {
-                sh 'python --version'
+                script {
+                    try {
+                        sh 'git clone -b dev https://github.com/PapaGoose/catsvsdogs.git'
+                    }
+                    catch (exc) {
+                        echo 'catsvsdog already cloned'
+                    }
+                
+                }
+            }
+        
+        }
+        stage('Pull from repo') {
+            steps {
+                sh '''
+                    cd catsvsdogs
+                    git pull origin dev'''
+            }
+        }
+        stage('Checkout dir'){
+            steps{
+                sh 'cd catsvsdogs && ls'
+            }
+        }
+        stage('Build docker image'){
+            steps{
+                sh '''
+                    chmod -R 777 ./catsvsdogs && cd catsvsdogs && pwd && docker-compose build
+                '''
             }
         }
     }
