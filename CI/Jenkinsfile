@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment {
-        DOCKERHUB_CREDS=credentials('Dockerhub')
-    }
     stages {
         stage('Login DockerHub'){
             steps{
@@ -24,16 +21,8 @@ pipeline {
         }
         stage('Build docker image'){
             steps{
-                script{
-                    try{
-                        sh 'cd catsvsdogs && /usr/bin/docker-compose build'
-                    }
-                    finally{
-                        sh 'cd catsvsdogs && /usr/bin/docker-compose up -d --remove-orphans'
-                    }
+                    sh 'cd catsvsdogs && /usr/bin/docker-compose build'
                 }
-
-            }
         }
         stage('Push image to registry'){
             steps{
