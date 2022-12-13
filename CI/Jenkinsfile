@@ -24,6 +24,17 @@ pipeline {
                     sh 'cd catsvsdogs && /usr/bin/docker-compose build'
                 }
         }
+        stage('Up container'){
+            steps{
+                sh 'cd catsvsdogs && /usr/bin/docker-compose up -d --remove-orphans'
+                sleep(time:60, unit: 'SECONDS')
+            }
+        }
+        stage('Checkout container logs') {
+            steps {
+                    sh 'cd catsvsdogs && /usr/bin/docker-compose logs -t --tail 100'
+            }
+        }
         stage('Push image to registry'){
             steps{
                 sh 'docker push papagoose/catvsdog:latest'
